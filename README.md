@@ -27,12 +27,13 @@ The CSS and JavaScript files are also avaible in not minimized versions.
 You create an audio player by using a ```div``` tag with the ```vysPlay``` class.  
 You can control the player by using the HTML ```data-*``` Attributes.
 
-| Setting        | Usage                                                                                    | Attribute         | Default Value                   |
-| -------------- | ---------------------------------------------------------------------------------------- | ----------------- | ------------------------------- |
-| Audio File     | Define the path to the audio file that should be played                                  | ```data-src```    | none                            |
-| Track Title    | Define the title of track that should be played                                          | ```data-title```  | none                            |
-| Track Artist   | Define the artist of track that should be played                                         | ```data-artist``` | none                            |
-| Track Cover    | Define the cover of track that should be played                                          | ```data-cover```  | ```vysPlay/default-cover.jpg``` |
-| Default Volume | Define the default volume of the player in percent                                       | ```data-vol```    | ```70```                        |
-| Start Position | Define the start position of the player in seconds                                       | ```data-start```  | ```0```                         |
-| Autoplay       | Define if the player should play automatically after loading.<br>This is a boolean value | ```data-auto```   | ```false```                     |
+| Setting        | Usage                                                                                                  | Attribute         | Default Value                   |
+| -------------- | ------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------- |
+| Audio File     | Define the path to the audio file that should be played                                                | ```data-src```    | none                            |
+| Track Title    | Define the title of track that should be played                                                        | ```data-title```  | none                            |
+| Track Artist   | Define the artist of track that should be played                                                       | ```data-artist``` | none                            |
+| Track Cover    | Define the cover of track that should be played                                                        | ```data-cover```  | ```vysPlay/default-cover.jpg``` |
+| Default Volume | Define the default volume of the player in percent                                                     | ```data-vol```    | ```70```                        |
+| Start Position | Define the start position of the player in seconds                                                     | ```data-start```  | ```0```                         |
+| Autoplay       | Define whether the player should play automatically after loading.<br>This is a boolean value.         | ```data-auto```   | ```false```                     |
+| Loop           | Define whether the player should play in loop automatically after loading.<br>This is a boolean value. | ```data-loop```   | ```false```                     |

@@ -9,4 +9,5 @@
 <glyph unicode="&#x20;" horiz-adv-x="512" d="" />
 <glyph unicode="&#xea1c;" glyph-name="Play" d="M192 832l640-384-640-384z" />
 <glyph unicode="&#xea1d;" glyph-name="Pause" d="M128 832h320v-768h-320zM576 832h320v-768h-320z" />
+<glyph unicode="&#xea2d;" glyph-name="Loop" d="M128 640h640v-192l256 256-256 256v-192h-768v-384h128zM896 256h-640v192l-256-256 256-256v192h768v384h-128z" />
 </font></defs></svg>

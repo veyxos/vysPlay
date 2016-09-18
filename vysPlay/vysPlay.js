@@ -18,6 +18,7 @@ function vysPlay() {
     audio.volume = e.dataset.vol ? (e.dataset.vol * 0.01) : '0.7';
     audio.currentTime = e.dataset.start ? e.dataset.start : 0;
     if (e.dataset.auto == 'true'){audio.setAttribute('autoplay','')};
+    if (e.dataset.loop == 'true'){audio.setAttribute('loop','')};
 
     var title = document.createElement('SPAN');
     title.className = 'vysPlayTitle';
@@ -58,19 +59,31 @@ function vysPlay() {
     cover.className = 'vysPlayCover';
     cover.src = e.dataset.cover ? e.dataset.cover : './vysPlay/default-cover.jpg';
 
+    var bottom = document.createElement('SPAN');
+    bottom.className = 'vysPlayBottom';
+
     var play = document.createElement('SPAN');
     play.className = e.dataset.auto == 'true' ? 'vysPlayPlayButton vysIconPause' : 'vysPlayPlayButton vysIconPlay';
+    play.id = 'vysPlayPly_' + i;
     play.onclick = function(event){(audio.paused) ? (audio.play(),this.classList.remove('vysIconPlay'),this.classList.add('vysIconPause')) : (audio.pause(),this.classList.remove('vysIconPause'),this.classList.add('vysIconPlay'));};
 
+    var loop = document.createElement('SPAN');
+    loop.className = e.dataset.loop == 'true' ? 'vysPlayLoopButton vysIconLoop vysPlayLoop' : 'vysPlayLoopButton vysIconLoop vysPlaySingle';
+    loop.onclick = function(event){audio.hasAttribute('loop') ? (audio.removeAttribute('loop'),this.classList.remove('vysPlayLoop'),this.classList.add('vysPlaySingle')) : (audio.setAttribute('loop',''),this.classList.remove('vysPlaySingle'),this.classList.add('vysPlayLoop'))}
+
     // APPEND ELEMENTS
+    bottom.appendChild(loop);
+    bottom.appendChild(duration);
     e.appendChild(audio);
     e.appendChild(title);
     e.appendChild(artist);
     e.appendChild(volume).appendChild(volumeSlide);
     e.appendChild(durationBar).appendChild(durationSlide);
-    e.appendChild(duration);
+    // e.appendChild(duration);
     e.appendChild(cover);
     e.appendChild(play);
+    e.appendChild(bottom);
+    // e.appendChild(loop);
 
   }
 
@@ -88,6 +101,13 @@ function vysPlay() {
       if (!play.paused) {
         document.getElementById('vysPlayDurText_' + i).innerHTML = vysTime(play.currentTime) + ' / ' + vysTime(play.duration);
         document.getElementById('vysPlayDur_' + i).value = Math.round(play.currentTime / play.duration * 1000);
+      }
+      if (play.currentTime == play.duration && !play.hasAttribute('loop')) {
+        play.currentTime = '0';
+        document.getElementById('vysPlayDurText_' + i).innerHTML = '0:00 / ' + vysTime(play.duration);
+        document.getElementById('vysPlayDur_' + i).value = '0';
+        document.getElementById('vysPlayPly_' + i).classList.remove('vysIconPause');
+        document.getElementById('vysPlayPly_' + i).classList.add('vysIconPlay');
       }
     }
   },200);

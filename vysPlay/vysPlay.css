@@ -1,11 +1,11 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 @font-face {
   font-family: 'vysIcon';
-  src:  url('vysIcon.eot?mhku4w');
-  src:  url('vysIcon.eot?mhku4w#iefix') format('embedded-opentype'),
-    url('vysIcon.ttf?mhku4w') format('truetype'),
-    url('vysIcon.woff?mhku4w') format('woff'),
-    url('vysIcon.svg?mhku4w#vysIcon') format('svg');
+  src:  url('vysIcon.eot?2juc7n');
+  src:  url('vysIcon.eot?2juc7n#iefix') format('embedded-opentype'),
+    url('vysIcon.ttf?2juc7n') format('truetype'),
+    url('vysIcon.woff?2juc7n') format('woff'),
+    url('vysIcon.svg?2juc7n#vysIcon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -31,6 +31,11 @@
 .vysIconPause:before {
   content: "\ea1d";
 }
+.vysIconLoop:before {
+  content: "\ea2d";
+}
+
+
 
 .vysPlay {
   font-family: "Open Sans", sans-serif;
@@ -68,6 +73,9 @@
 .vysPlay .vysPlayArtist {
   font-size: 14px;
 }
+.vysPlay .vysPlayDurationBar {
+  overflow: visible;
+}
 .vysPlay .vysPlayVolume {
   transform: rotateZ(-90deg);
   position: absolute;
@@ -100,11 +108,30 @@
   animation-duration: 250ms;
   animation-fill-mode: forwards;
 }
-.vysPlay .vysPlayDuration {
+.vysPlay .vysPlayBottom {
   position: absolute;
   right: 55px;
   top: 95px;
   font-size: 14px;
+}
+.vysPlay .vysPlayDuration {
+  pointer-events: none;
+}
+.vysPlay .vysPlayLoopButton {
+  padding-right: 4px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+.vysPlay .vysPlayLoopButton.vysPlaySingle {
+  color: #def08e;
+}
+.vysPlay .vysPlayLoopButton.vysPlaySingle:hover {
+  color: rgba(255,255,255,.9);
+  text-shadow: 0px 0px 1px rgba(0,0,0,.14);
+}
+.vysPlay .vysPlayLoopButton.vysPlayLoop {
+  color: #fff;
 }
 .vysPlay .vysPlayDurationBar input[type=range] {
   margin-top: 25px;
