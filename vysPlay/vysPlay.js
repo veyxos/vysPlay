@@ -59,7 +59,7 @@ function vysPlay() {
     cover.src = e.dataset.cover ? e.dataset.cover : './vysPlay/default-cover.jpg';
 
     var play = document.createElement('SPAN');
-    play.className = e.dataset.auto == 'true' ? 'vysPlayPlayButton vysIconPause' : 'vysPlayPlayButton vysIconPause';
+    play.className = e.dataset.auto == 'true' ? 'vysPlayPlayButton vysIconPause' : 'vysPlayPlayButton vysIconPlay';
     play.onclick = function(event){(audio.paused) ? (audio.play(),this.classList.remove('vysIconPlay'),this.classList.add('vysIconPause')) : (audio.pause(),this.classList.remove('vysIconPause'),this.classList.add('vysIconPlay'));};
 
     // APPEND ELEMENTS
