@@ -15,7 +15,9 @@ function vysPlay() {
     audio.className = 'vysPlayAudio';
     audio.id = 'vysPlay_' + i;
     audio.src = e.dataset.src;
-    audio.volume = '0.7';
+    audio.volume = e.dataset.vol ? (e.dataset.vol * 0.01) : '0.7';
+    audio.currentTime = e.dataset.start ? e.dataset.start : 0;
+    if (e.dataset.auto == 'true'){audio.setAttribute('autoplay','')};
 
     var title = document.createElement('SPAN');
     title.className = 'vysPlayTitle';
@@ -33,7 +35,7 @@ function vysPlay() {
     volumeSlide.className = 'vysPlayVolumeSlide';
     volumeSlide.id = 'vysPlayVol_' + i;
     volumeSlide.type = 'range';
-    volumeSlide.value = '70';
+    volumeSlide.value = e.dataset.vol ? e.dataset.vol : '70';
 
     var durationBar = document.createElement('FORM');
     durationBar.className = 'vysPlayDurationBar';
@@ -57,7 +59,7 @@ function vysPlay() {
     cover.src = e.dataset.cover ? e.dataset.cover : './vysPlay/default-cover.jpg';
 
     var play = document.createElement('SPAN');
-    play.className = 'vysPlayPlayButton vysIconPlay';
+    play.className = e.dataset.auto == 'true' ? 'vysPlayPlayButton vysIconPause' : 'vysPlayPlayButton vysIconPause';
     play.onclick = function(event){(audio.paused) ? (audio.play(),this.classList.remove('vysIconPlay'),this.classList.add('vysIconPause')) : (audio.pause(),this.classList.remove('vysIconPause'),this.classList.add('vysIconPlay'));};
 
     // APPEND ELEMENTS
@@ -75,6 +77,7 @@ function vysPlay() {
   setTimeout(function(){
     for (var i = 0; i < document.getElementsByClassName('vysPlay').length; i++) {
       document.getElementById('vysPlayDurText_' + i).innerHTML = '0:00 / ' + vysTime(document.getElementById('vysPlay_' + i).duration);
+      document.getElementById('vysPlayDur_' + i).value = e.dataset.start ? Math.round(e.dataset.start / audio.duration * 1000) : '0';
     }
   },50);
 
